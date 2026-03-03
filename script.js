@@ -233,6 +233,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         generateSlides();
         initializeSwiper();
+        setupQuickNav();
     });
 
     // GENERAR SLIDES DINÁMICAMENTE
@@ -461,6 +462,35 @@
         if (e.key === 'ArrowRight') swiper.slideNext();
         if (e.key === 'ArrowLeft') swiper.slidePrev();
     });
+
+    // NAVEGACIÓN RÁPIDA A PÁGINA ESPECÍFICA
+    function setupQuickNav() {
+        const pageInput = document.getElementById('pageInput');
+        const pageBtn = document.getElementById('pageBtn');
+
+        const goToPage = () => {
+            const pageNum = parseInt(pageInput.value);
+            const totalSlides = 1 + reasons.length + 1 + 1; // portada + 200 razones + razón 201 + propuesta
+
+            if (pageNum < 1 || pageNum > totalSlides || isNaN(pageNum)) {
+                alert(`Por favor ingresa un número entre 1 y ${totalSlides}`);
+                return;
+            }
+
+            // Restar 1 porque los índices comienzan en 0
+            swiper.slideTo(pageNum - 1, 600);
+            pageInput.value = '';
+            pageInput.blur();
+        };
+
+        pageBtn.addEventListener('click', goToPage);
+        pageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') goToPage();
+        });
+    }
+
+    // Llamar a setupQuickNav después de que Swiper esté inicializado
+    // Ya se llama en el DOMContentLoaded arriba
 
     // Escuchar cambios del slide (debug)
     // document.addEventListener('swiperslidechange', () => console.log('Slide changed'));

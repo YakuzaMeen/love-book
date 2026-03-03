@@ -298,6 +298,17 @@ body::before {
     animation: slideIn 0.6s ease-out;
 }
 
+/* Mensaje instructivo debajo del candado */
+.instruction-message {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 30px;
+    font-style: italic;
+    text-align: center;
+    letter-spacing: 0.5px;
+    font-family: 'Lora', serif;
+}
+
 .proposal-page .page-text {
     color: white;
     font-size: 22px;

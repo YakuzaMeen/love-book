@@ -335,6 +335,12 @@
         lockIcon.addEventListener('click', () => startProposalFlow());
         proposalPageDiv.appendChild(lockIcon);
 
+        // Mensaje instructivo
+        const instructionMessage = document.createElement('div');
+        instructionMessage.classList.add('instruction-message');
+        instructionMessage.textContent = 'Cuando te sientas preparada presiona el candado';
+        proposalPageDiv.appendChild(instructionMessage);
+
         // Texto y botones inicialmente ocultos
         const proposalPageText = document.createElement('div');
         proposalPageText.classList.add('page-text', 'hidden-content');
@@ -356,9 +362,9 @@
         proposalButtonsDiv.appendChild(btn1);
         proposalButtonsDiv.appendChild(btn2);
 
-        // Credit on proposal
+        // Credit on proposal (también inicialmente oculto)
         const proposalCredit = document.createElement('div');
-        proposalCredit.classList.add('cover-author');
+        proposalCredit.classList.add('cover-author', 'hidden-content');
         proposalCredit.textContent = 'Codeado por Oskar Rodrigo Sosa Soto';
         proposalCredit.style.marginTop = '18px';
 

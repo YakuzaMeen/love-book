@@ -335,12 +335,13 @@
         lockIcon.addEventListener('click', () => startProposalFlow());
         proposalPageDiv.appendChild(lockIcon);
 
+        // Texto y botones inicialmente ocultos
         const proposalPageText = document.createElement('div');
-        proposalPageText.classList.add('page-text');
+        proposalPageText.classList.add('page-text', 'hidden-content');
         proposalPageText.innerHTML = proposalText.replace(/\n/g, '<br>');
 
         const proposalButtonsDiv = document.createElement('div');
-        proposalButtonsDiv.classList.add('proposal-buttons');
+        proposalButtonsDiv.classList.add('proposal-buttons', 'hidden-content');
 
         const btn1 = document.createElement('button');
         btn1.classList.add('proposal-btn');
@@ -431,6 +432,14 @@
 
     // MOSTRAR MENSAJE FINAL Y CORAZONES
     function showProposalResponse() {
+        // Revelar el contenido oculto (texto y botones)
+        const hiddenContents = document.querySelectorAll('.hidden-content');
+        hiddenContents.forEach(content => {
+            content.classList.remove('hidden-content');
+            content.classList.add('revealed');
+        });
+
+        // Mostrar el modal de confirmación final
         const modal = document.getElementById('proposalModal');
         const modalText = document.getElementById('modalText');
         modalText.textContent = 'Oficialmente eres mi novia';

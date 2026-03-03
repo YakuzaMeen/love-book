@@ -288,6 +288,16 @@ body::before {
     }
 }
 
+/* Contenido oculto hasta que se desbloquee el candado */
+.hidden-content {
+    display: none;
+}
+
+.hidden-content.revealed {
+    display: block;
+    animation: slideIn 0.6s ease-out;
+}
+
 .proposal-page .page-text {
     color: white;
     font-size: 22px;

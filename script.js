@@ -25,7 +25,7 @@
         "Tu sentido del humor",
         "Tu forma especial de ser",
         "Tu forma de enseñarme cosas nuevas",
-        "Tu voz",
+        "Tu primo Victor Memo Gomez",
         "Tus detalles",
         "Tu ternura",
         "Tu paciencia",
@@ -346,12 +346,12 @@
         const btn1 = document.createElement('button');
         btn1.classList.add('proposal-btn');
         btn1.textContent = 'Sí';
-        btn1.addEventListener('click', () => startProposalFlow());
+        btn1.addEventListener('click', () => showProposalResponse());
 
         const btn2 = document.createElement('button');
         btn2.classList.add('proposal-btn');
         btn2.textContent = 'Obvio que sí';
-        btn2.addEventListener('click', () => startProposalFlow());
+        btn2.addEventListener('click', () => showProposalResponse());
 
         proposalButtonsDiv.appendChild(btn1);
         proposalButtonsDiv.appendChild(btn2);
@@ -426,20 +426,21 @@
 
         document.getElementById('continueBtn').onclick = () => {
             finalWarnModal.classList.add('hidden');
-            showProposalResponse();
+            revealProposalContent();
         };
     }
 
-    // MOSTRAR MENSAJE FINAL Y CORAZONES
-    function showProposalResponse() {
-        // Revelar el contenido oculto (texto y botones)
+    // REVELAR LA DECLARACIÓN Y BOTONES (después de confirmaciones)
+    function revealProposalContent() {
         const hiddenContents = document.querySelectorAll('.hidden-content');
         hiddenContents.forEach(content => {
             content.classList.remove('hidden-content');
             content.classList.add('revealed');
         });
+    }
 
-        // Mostrar el modal de confirmación final
+    // MOSTRAR MENSAJE FINAL Y CORAZONES (cuando se presiona Sí o Obvio que sí)
+    function showProposalResponse() {
         const modal = document.getElementById('proposalModal');
         const modalText = document.getElementById('modalText');
         modalText.textContent = 'Oficialmente eres mi novia';

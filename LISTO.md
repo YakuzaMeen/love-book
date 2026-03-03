@@ -94,8 +94,8 @@ Si quieres cambiar algo antes de compartir:
 
 **Cambiar tu nombre en la propuesta:**
 1. Abre `script.js`
-2. Busca: `¿Me permitas a mí, Rodrigo Sosa, ser tu novio?`
-3. Cambia "Rodrigo Sosa" por tu nombre
+2. Busca: `¿Me permites a mí ser el amor de tu vida?`
+3. Cambia el texto de la propuesta según desees
 
 **Cambiar colores (de rosa a otro):**
 1. Abre `style.css`
@@ -203,6 +203,7 @@ Si necesitas:
 👤 Usuario GitHub: YakuzaMeen
 📧 Email: u202212214@upc.edu.pe
 📅 Creado: Marzo 3, 2026
+ - **Codeado por:** Oskar Rodrigo Sosa Soto
 ```
 
 ---

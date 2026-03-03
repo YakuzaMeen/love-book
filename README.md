@@ -40,13 +40,11 @@ love-book/
 
 ## 🎨 Personalización
 
-### Cambiar el nombre de la propuesta
+### Cambiar el texto de la propuesta
 
-Abre `script.js` y modifica esta línea:
+Abre `script.js` y modifica la variable `proposalText` para personalizar la pregunta (por defecto es "¿Me permites a mí ser el amor de tu vida?") o ajustar la intención.
 
-```javascript
-¿Me permitas a mí, Rodrigo Sosa, ser tu novio?
-```
+La propuesta está bloqueada por un flujo de confirmaciones (accesible mediante un candado 🔒) que quien la abra debe confirmar antes de ver el mensaje final.
 
 ### Modificar colores
 
@@ -106,6 +104,7 @@ El proyecto incluye:
 - **Usuario GitHub:** YakuzaMeen
 - **Email:** u202212214@upc.edu.pe
 - **Creado el:** Marzo 3, 2026
+ - **Codeado por:** Oskar Rodrigo Sosa Soto
 
 ## 💡 Consejos
 

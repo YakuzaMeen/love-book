@@ -100,6 +100,37 @@ body::before {
     position: relative;
 }
 
+/* Portada estilo libro */
+.cover-page {
+    background: linear-gradient(180deg, #ffccd5 0%, #ffdce6 100%);
+    border-radius: 24px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+    padding: 80px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cover-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    color: #8b0f4a;
+    margin-bottom: 6px;
+}
+
+.cover-subtitle {
+    font-size: 18px;
+    color: #6b0b3f;
+    margin-bottom: 14px;
+}
+
+.cover-author {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #6b0b3f;
+}
+
 @keyframes slideIn {
     from {
         opacity: 0;
@@ -169,6 +200,32 @@ body::before {
 .page.proposal-page {
     background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
     color: white;
+}
+
+.lock-icon {
+    font-size: 80px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: lockPulse 2s infinite;
+}
+
+.lock-icon:hover {
+    transform: scale(1.15);
+    filter: brightness(1.2);
+}
+
+.lock-icon:active {
+    transform: scale(0.95);
+}
+
+@keyframes lockPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 .proposal-page .page-text {
@@ -324,6 +381,14 @@ body::before {
     animation: float-up 3s ease-in forwards;
     pointer-events: none;
 }
+
+/* Modales de confirmación */
+.proposal-modal .proposal-modal-content { max-width: 480px; }
+
+.proposal-modal .proposal-btn { min-width: 110px }
+
+/* Aumentar sensación de "hoja" en el flip */
+.page { background-clip: padding-box; }
 
 @keyframes float-up {
     0% {

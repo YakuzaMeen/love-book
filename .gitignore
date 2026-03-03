@@ -1,0 +1,21 @@
+# Ignorar archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar carpetas de IDEs
+.vscode/
+.idea/
+.sublime-project
+.sublime-workspace
+
+# Ignorar node_modules si se agrega npm en el futuro
+node_modules/
+package-lock.json
+
+# Ignorar archivos de editor
+*.swp
+*.swo
+*~
+
+# Logs
+*.log

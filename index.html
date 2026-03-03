@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libro de Amor - 200 Razones para Amarte</title>
+    
+    <!-- Google Fonts para tipografía romántica -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+    
+    <!-- Swiper.js CSS desde CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Contenedor principal -->
+    <div class="main-container">
+        <!-- Swiper slider -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper" id="swiperWrapper">
+                <!-- Los slides se generarán dinámicamente desde JavaScript -->
+            </div>
+            
+            <!-- Botones de navegación -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            
+            <!-- Indicadores de progreso -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <!-- Modal para la propuesta de novios -->
+    <div id="proposalModal" class="proposal-modal hidden">
+        <div class="proposal-modal-content">
+            <div class="modal-text" id="modalText"></div>
+            <div class="floating-hearts" id="floatingHearts"></div>
+        </div>
+    </div>
+
+    <!-- Swiper.js desde CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- Script personalizado -->
+    <script src="script.js"></script>
+</body>
+</html>

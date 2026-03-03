@@ -289,8 +289,9 @@ body::before {
 }
 
 /* Contenido oculto hasta que se desbloquee el candado */
+/* the !important ensures no later rule (like .proposal-buttons) can override it */
 .hidden-content {
-    display: none;
+    display: none !important;
 }
 
 .hidden-content.revealed {

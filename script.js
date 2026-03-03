@@ -443,6 +443,11 @@
             content.classList.remove('hidden-content');
             content.classList.add('revealed');
         });
+        // una vez revelado, ya no es necesaria la instrucción
+        const instr = document.querySelector('.instruction-message');
+        if (instr) {
+            instr.style.display = 'none';
+        }
     }
 
     // MOSTRAR MENSAJE FINAL Y CORAZONES (cuando se presiona Sí o Obvio que sí)

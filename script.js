@@ -292,9 +292,33 @@
         // Propuesta final
         const proposalPage = document.createElement('div');
         proposalPage.className = 'ios-page';
-        proposalPage.style.justifyContent = 'flex-start';
-        proposalPage.style.paddingTop = '60px';
-        proposalPage.innerHTML = `
+        proposalPage.style.justifyContent = 'center';
+        proposalPage.style.alignItems = 'center';
+        proposalPage.style.flexDirection = 'column';
+
+        // Lock icon
+        const lockIcon = document.createElement('div');
+        lockIcon.classList.add('lock-icon');
+        lockIcon.textContent = '🔒';
+        lockIcon.style.fontSize = '48px';
+        lockIcon.style.cursor = 'pointer';
+        lockIcon.addEventListener('click', () => startProposalFlow());
+        proposalPage.appendChild(lockIcon);
+
+        // Mensaje instructivo
+        const instructionMessage = document.createElement('div');
+        instructionMessage.classList.add('instruction-message');
+        instructionMessage.textContent = 'Cuando te sientas preparada presiona el candado';
+        instructionMessage.style.fontSize = '16px';
+        instructionMessage.style.color = '#666';
+        instructionMessage.style.marginTop = '20px';
+        instructionMessage.style.textAlign = 'center';
+        proposalPage.appendChild(instructionMessage);
+
+        // Texto y botones inicialmente ocultos
+        const proposalPageText = document.createElement('div');
+        proposalPageText.classList.add('page-text', 'hidden-content');
+        proposalPageText.innerHTML = `
             <div style="font-size: 20px; color: #333; line-height: 1.8; margin-bottom: 40px;">
                 <strong>Después de 200 razones para amarte…</strong><br>
                 <br>
@@ -303,8 +327,52 @@
                 <br>
                 <strong>¿Me permites a mí ser el amor de tu vida?</strong>
             </div>
-            <button onclick="showIOSProposalResponse()" style="padding: 12px 30px; font-size: 16px; background: #ff1493; color: white; border: none; border-radius: 25px; cursor: pointer; margin-top: 20px;">Sí, obvio</button>
         `;
+        proposalPage.appendChild(proposalPageText);
+
+        const proposalButtonsDiv = document.createElement('div');
+        proposalButtonsDiv.classList.add('proposal-buttons', 'hidden-content');
+        proposalButtonsDiv.style.display = 'flex';
+        proposalButtonsDiv.style.gap = '10px';
+        proposalButtonsDiv.style.marginTop = '20px';
+
+        const btn1 = document.createElement('button');
+        btn1.classList.add('proposal-btn');
+        btn1.textContent = 'Sí';
+        btn1.style.padding = '12px 30px';
+        btn1.style.fontSize = '16px';
+        btn1.style.background = '#ff1493';
+        btn1.style.color = 'white';
+        btn1.style.border = 'none';
+        btn1.style.borderRadius = '25px';
+        btn1.style.cursor = 'pointer';
+        btn1.addEventListener('click', () => showIOSProposalResponse());
+
+        const btn2 = document.createElement('button');
+        btn2.classList.add('proposal-btn');
+        btn2.textContent = 'Obvio que sí';
+        btn2.style.padding = '12px 30px';
+        btn2.style.fontSize = '16px';
+        btn2.style.background = '#ff1493';
+        btn2.style.color = 'white';
+        btn2.style.border = 'none';
+        btn2.style.borderRadius = '25px';
+        btn2.style.cursor = 'pointer';
+        btn2.addEventListener('click', () => showIOSProposalResponse());
+
+        proposalButtonsDiv.appendChild(btn1);
+        proposalButtonsDiv.appendChild(btn2);
+
+        // Credit
+        const proposalCredit = document.createElement('div');
+        proposalCredit.classList.add('cover-author', 'hidden-content');
+        proposalCredit.textContent = 'Codeado por Oskar Rodrigo Sosa Soto';
+        proposalCredit.style.marginTop = '18px';
+        proposalCredit.style.fontSize = '14px';
+        proposalCredit.style.color = '#999';
+
+        proposalPage.appendChild(proposalButtonsDiv);
+        proposalPage.appendChild(proposalCredit);
         content.appendChild(proposalPage);
     }
 

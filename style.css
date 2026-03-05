@@ -22,7 +22,7 @@ body {
 
 /* Fondo con corazones sutiles decorativos */
 body::before {
-    content: '♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥';
+    content: '♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥';
     position: fixed;
     top: 0;
     left: 0;
@@ -30,7 +30,7 @@ body::before {
     height: 100%;
     font-size: 80px;
     color: rgba(255, 192, 203, 0.08);
-    word-wrap: break-word;
+    white-space: nowrap;
     pointer-events: none;
     z-index: 0;
     overflow: hidden;

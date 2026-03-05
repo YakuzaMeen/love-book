@@ -31,13 +31,6 @@ love-book/
 2. Abre `index.html` en tu navegador
 3. ¡Disfruta navegando por las razones!
 
-### En GitHub Pages
-
-1. Sube este repositorio a GitHub
-2. Ve a **Settings > Pages**
-3. Selecciona la rama `main` (o `master`)
-4. El sitio estará disponible en `https://tu-usuario.github.io/love-book`
-
 ## 🎨 Personalización
 
 ### Cambiar el texto de la propuesta
@@ -102,7 +95,7 @@ El proyecto incluye:
 ## 🎯 Datos del Creador
 
 - **Usuario GitHub:** YakuzaMeen
-- **Email:** u202212214@upc.edu.pe
+- **Email:** rodrskr@gmail.com
 - **Creado el:** Marzo 3, 2026
  - **Codeado por:** Oskar Rodrigo Sosa Soto
 

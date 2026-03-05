@@ -232,7 +232,8 @@
 
     // DETECTAR SI ES iOS PARA EVITAR PROBLEMAS CON EL EFECTO FLIP
     function isIOS() {
-        return /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+        const ua = navigator.userAgent.toLowerCase();
+        return /iphone|ipad|ipod|ios/.test(ua) || 
                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     }
 
@@ -248,6 +249,7 @@
     // GENERAR SLIDES DINÁMICAMENTE
     function generateSlides() {
         const wrapper = document.getElementById('swiperWrapper');
+        const iOS = isIOS();
 
         // Portada
         const coverSlide = document.createElement('div');
@@ -255,8 +257,8 @@
 
         const coverPage = document.createElement('div');
         coverPage.classList.add('page', 'cover-page');
-        if (isIOS()) {
-            coverPage.style.animation = 'none';
+        if (iOS) {
+            coverPage.style.cssText = 'animation: none; box-shadow: none; border-radius: 0;';
         }
 
         const coverTitle = document.createElement('div');
@@ -284,8 +286,8 @@
 
             const page = document.createElement('div');
             page.classList.add('page');
-            if (isIOS()) {
-                page.style.animation = 'none';
+            if (iOS) {
+                page.style.cssText = 'animation: none; box-shadow: 0 2px 10px rgba(255, 192, 203, 0.1); border-radius: 8px;';
             }
 
             const pageNumber = document.createElement('div');
@@ -298,7 +300,9 @@
 
             const pageHeart = document.createElement('div');
             pageHeart.classList.add('page-heart');
-            pageHeart.textContent = '❤️';
+            if (!iOS) {
+                pageHeart.textContent = '❤️';
+            }
 
             page.appendChild(pageNumber);
             page.appendChild(pageText);
@@ -323,8 +327,8 @@
 
         const specialPageDiv = document.createElement('div');
         specialPageDiv.classList.add('page', 'special-page');
-        if (isIOS()) {
-            specialPageDiv.style.animation = 'none';
+        if (iOS) {
+            specialPageDiv.style.cssText = 'animation: none; box-shadow: 0 2px 10px rgba(255, 192, 203, 0.1); border-radius: 8px;';
         }
 
         const specialPageNumber = document.createElement('div');
@@ -346,8 +350,8 @@
 
         const proposalPageDiv = document.createElement('div');
         proposalPageDiv.classList.add('page', 'proposal-page');
-        if (isIOS()) {
-            proposalPageDiv.style.animation = 'none';
+        if (iOS) {
+            proposalPageDiv.style.cssText = 'animation: none; box-shadow: 0 2px 10px rgba(255, 192, 203, 0.1); border-radius: 8px;';
         }
 
         const lockIcon = document.createElement('div');
@@ -398,35 +402,60 @@
 
     // INICIALIZAR SWIPER con efecto flip (simula pasar hoja) o slide en iOS
     function initializeSwiper() {
-        const useFlipEffect = !isIOS(); // Usar flip solo si no es iOS
+        const iOS = isIOS();
+        const useFlipEffect = !iOS; // Usar flip solo si no es iOS
         
-        swiper = new Swiper('.swiper-container', {
+        const baseConfig = {
             direction: 'horizontal',
             loop: false,
-            effect: useFlipEffect ? 'flip' : 'slide',
-            flipEffect: useFlipEffect ? {
-                slideShadows: false,
-                limitRotation: true
-            } : undefined,
-            pagination: isIOS() ? false : {
-                el: '.swiper-pagination',
-                clickable: true,
-                dynamicBullets: true
-            },
-            navigation: isIOS() ? false : {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev'
-            },
             slidesPerView: 1,
             spaceBetween: 0,
-            speed: isIOS() ? 300 : 600, // Reducir velocidad en iOS
-            keyboard: isIOS() ? false : {
-                enabled: true,
-                onlyInViewport: false
-            },
             touchRatio: 1,
-            grabCursor: true
-        });
+            grabCursor: !iOS
+        };
+
+        if (iOS) {
+            // Config minimalista para iOS
+            Object.assign(baseConfig, {
+                effect: 'slide',
+                speed: 200,
+                simulateTouch: true,
+                touchEventsTarget: 'container',
+                allowMultipleTouches: false,
+                threshold: 5,
+                freeMode: false,
+                freeModeSticky: false,
+                preloadImages: false,
+                lazy: {
+                    loadPrevNext: false
+                }
+            });
+        } else {
+            // Config completa para Desktop/Android
+            Object.assign(baseConfig, {
+                effect: 'flip',
+                flipEffect: {
+                    slideShadows: false,
+                    limitRotation: true
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    dynamicBullets: true
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
+                },
+                speed: 600,
+                keyboard: {
+                    enabled: true,
+                    onlyInViewport: false
+                }
+            });
+        }
+
+        swiper = new Swiper('.swiper-container', baseConfig);
     }
 
     // FLUJO DE CONFIRMACIONES ANIDADAS PARA LA PROPUESTA
@@ -483,8 +512,10 @@
         setTimeout(() => modal.classList.add('hidden'), 4200);
     }
 
-    // CORAZONES FLOTANTES
+    // CORAZONES FLOTANTES (solo en Desktop/Android)
     function createFloatingHearts() {
+        if (isIOS()) return; // No crear corazones en iOS
+        
         const heartsContainer = document.getElementById('floatingHearts');
         heartsContainer.innerHTML = '';
         for (let i = 0; i < 14; i++) {

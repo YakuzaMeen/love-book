@@ -237,6 +237,9 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+        if (isIOS()) {
+            document.body.classList.add('ios');
+        }
         generateSlides();
         initializeSwiper();
         setupQuickNav();
@@ -252,6 +255,9 @@
 
         const coverPage = document.createElement('div');
         coverPage.classList.add('page', 'cover-page');
+        if (isIOS()) {
+            coverPage.style.animation = 'none';
+        }
 
         const coverTitle = document.createElement('div');
         coverTitle.classList.add('cover-title');
@@ -278,6 +284,9 @@
 
             const page = document.createElement('div');
             page.classList.add('page');
+            if (isIOS()) {
+                page.style.animation = 'none';
+            }
 
             const pageNumber = document.createElement('div');
             pageNumber.classList.add('page-number');
@@ -314,6 +323,9 @@
 
         const specialPageDiv = document.createElement('div');
         specialPageDiv.classList.add('page', 'special-page');
+        if (isIOS()) {
+            specialPageDiv.style.animation = 'none';
+        }
 
         const specialPageNumber = document.createElement('div');
         specialPageNumber.classList.add('page-number');
@@ -334,6 +346,9 @@
 
         const proposalPageDiv = document.createElement('div');
         proposalPageDiv.classList.add('page', 'proposal-page');
+        if (isIOS()) {
+            proposalPageDiv.style.animation = 'none';
+        }
 
         const lockIcon = document.createElement('div');
         lockIcon.classList.add('lock-icon');
@@ -393,19 +408,19 @@
                 slideShadows: false,
                 limitRotation: true
             } : undefined,
-            pagination: {
+            pagination: isIOS() ? false : {
                 el: '.swiper-pagination',
                 clickable: true,
                 dynamicBullets: true
             },
-            navigation: {
+            navigation: isIOS() ? false : {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev'
             },
             slidesPerView: 1,
             spaceBetween: 0,
-            speed: 600,
-            keyboard: {
+            speed: isIOS() ? 300 : 600, // Reducir velocidad en iOS
+            keyboard: isIOS() ? false : {
                 enabled: true,
                 onlyInViewport: false
             },
@@ -494,6 +509,8 @@
 
     // NAVEGACIÓN RÁPIDA A PÁGINA ESPECÍFICA
     function setupQuickNav() {
+        if (isIOS()) return; // Deshabilitar quick nav en iOS
+        
         const pageInput = document.getElementById('pageInput');
         const pageBtn = document.getElementById('pageBtn');
 

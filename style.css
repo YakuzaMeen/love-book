@@ -35,6 +35,11 @@ body::before {
     line-height: 1.2;
 }
 
+/* Deshabilitar fondo decorativo en iOS para mejorar rendimiento */
+.ios body::before {
+    display: none;
+}
+
 /* ========================================
    CONTENEDOR PRINCIPAL
    ======================================== */
@@ -126,6 +131,11 @@ body::before {
     border-radius: 50px;
     box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
     backdrop-filter: blur(10px);
+}
+
+/* Ocultar navegación rápida en iOS */
+.ios .quick-nav-bar {
+    display: none;
 }
 
 .page-input {
@@ -386,6 +396,12 @@ body::before {
     }
 }
 
+/* Ocultar botones de navegación en iOS */
+.ios .swiper-button-next,
+.ios .swiper-button-prev {
+    display: none;
+}
+
 /* Paginación */
 .swiper-pagination-bullet {
     background: #ff69b4;
@@ -395,6 +411,11 @@ body::before {
 .swiper-pagination-bullet-active {
     background: #ff1493;
     opacity: 1;
+}
+
+/* Ocultar paginación en iOS */
+.ios .swiper-pagination {
+    display: none;
 }
 
 /* ========================================

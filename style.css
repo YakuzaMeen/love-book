@@ -651,13 +651,23 @@ html {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 40px 20px;
-    background: white;
+    padding: 20px;
+    background: linear-gradient(135deg, #fff5f7 0%, #ffe4e9 100%);
     margin: 0;
     border: none;
     box-shadow: none;
     animation: none;
     text-align: center;
+}
+
+.ios-page > div:first-child:not(.lock-icon):not(.instruction-message):not(.page-text):not(.proposal-buttons):not(.cover-author) {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(255, 192, 203, 0.2);
+    padding: 30px 20px;
+    max-width: 350px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .ios-page-number {

@@ -230,6 +230,12 @@
     // INICIALIZACIÓN DE SWIPER Y CONTENIDO
     let swiper = null;
 
+    // DETECTAR SI ES iOS PARA EVITAR PROBLEMAS CON EL EFECTO FLIP
+    function isIOS() {
+        return /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+               (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         generateSlides();
         initializeSwiper();
@@ -375,16 +381,18 @@
         wrapper.appendChild(proposalSlide);
     }
 
-    // INICIALIZAR SWIPER con efecto flip (simula pasar hoja)
+    // INICIALIZAR SWIPER con efecto flip (simula pasar hoja) o slide en iOS
     function initializeSwiper() {
+        const useFlipEffect = !isIOS(); // Usar flip solo si no es iOS
+        
         swiper = new Swiper('.swiper-container', {
             direction: 'horizontal',
             loop: false,
-            effect: 'flip',
-            flipEffect: {
+            effect: useFlipEffect ? 'flip' : 'slide',
+            flipEffect: useFlipEffect ? {
                 slideShadows: false,
                 limitRotation: true
-            },
+            } : undefined,
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,

@@ -37,9 +37,9 @@ body::before {
     line-height: 1.2;
 }
 
-/* Deshabilitar fondo decorativo en iOS para mejorar rendimiento */
+/* Deshabilitar fondo decorativo en iOS para mejorar rendimiento - REMOVIDO para mostrar corazones */
 .ios body::before {
-    display: none !important;
+    /* display: none !important; */
 }
 
 /* Versión lite para iOS */
@@ -664,9 +664,9 @@ html {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 16px;
     box-shadow: 0 4px 16px rgba(255, 192, 203, 0.2);
-    padding: 30px 20px;
-    max-width: 350px;
-    width: 100%;
+    padding: 40px 30px;
+    max-width: 90%;
+    width: 90%;
     margin: 0 auto;
 }
 

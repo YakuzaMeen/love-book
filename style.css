@@ -660,7 +660,7 @@ html {
     text-align: center;
 }
 
-.ios-page > div:first-child:not(.lock-icon):not(.instruction-message):not(.page-text):not(.proposal-buttons):not(.cover-author) {
+.ios-card-content {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 16px;
     box-shadow: 0 4px 16px rgba(255, 192, 203, 0.2);

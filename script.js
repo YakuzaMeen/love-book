@@ -260,33 +260,42 @@
         // Portada iOS
         const coverPage = document.createElement('div');
         coverPage.className = 'ios-page';
-        coverPage.innerHTML = `
+        const coverCard = document.createElement('div');
+        coverCard.className = 'ios-card-content';
+        coverCard.innerHTML = `
             <div style="font-size: 48px; font-weight: bold; color: #ff1493; margin-bottom: 20px;">200 Razones</div>
             <div style="font-size: 36px; font-weight: bold; color: #333; margin-bottom: 30px;">para Amarte</div>
             <div style="font-size: 18px; color: #666;">y 1 para dejarte</div>
             <div style="font-size: 14px; color: #999; margin-top: 40px;">Un pequeño libro hecho con cariño</div>
         `;
+        coverPage.appendChild(coverCard);
         content.appendChild(coverPage);
 
         // Generar todas las 200 razones
         reasons.forEach((reason, index) => {
             const page = document.createElement('div');
             page.className = 'ios-page';
-            page.innerHTML = `
+            const cardDiv = document.createElement('div');
+            cardDiv.className = 'ios-card-content';
+            cardDiv.innerHTML = `
                 <div class="ios-page-number">Razón ${index + 1}</div>
                 <div class="ios-page-text">${reason}</div>
             `;
+            page.appendChild(cardDiv);
             content.appendChild(page);
         });
 
         // Razón 201 (imposible)
         const specialPageDiv = document.createElement('div');
         specialPageDiv.className = 'ios-page';
+        const specialCard = document.createElement('div');
+        specialCard.className = 'ios-card-content';
         const specialPageText = "La única razón por la que podría dejarte es si mi corazón dejara de latir, porque mientras viva, siempre voy a elegirte a ti.";
-        specialPageDiv.innerHTML = `
+        specialCard.innerHTML = `
             <div class="ios-page-number">Razón 201 - La Imposible</div>
             <div class="ios-page-text">${specialPageText}</div>
         `;
+        specialPageDiv.appendChild(specialCard);
         content.appendChild(specialPageDiv);
 
         // Propuesta final
@@ -296,6 +305,14 @@
         proposalPage.style.alignItems = 'center';
         proposalPage.style.flexDirection = 'column';
 
+        const proposalCard = document.createElement('div');
+        proposalCard.className = 'ios-card-content';
+        proposalCard.style.display = 'flex';
+        proposalCard.style.flexDirection = 'column';
+        proposalCard.style.alignItems = 'center';
+        proposalCard.style.justifyContent = 'center';
+        proposalCard.style.textAlign = 'center';
+
         // Lock icon
         const lockIcon = document.createElement('div');
         lockIcon.classList.add('lock-icon');
@@ -303,7 +320,7 @@
         lockIcon.style.fontSize = '48px';
         lockIcon.style.cursor = 'pointer';
         lockIcon.addEventListener('click', () => startProposalFlow());
-        proposalPage.appendChild(lockIcon);
+        proposalCard.appendChild(lockIcon);
 
         // Mensaje instructivo
         const instructionMessage = document.createElement('div');
@@ -313,7 +330,7 @@
         instructionMessage.style.color = '#666';
         instructionMessage.style.marginTop = '20px';
         instructionMessage.style.textAlign = 'center';
-        proposalPage.appendChild(instructionMessage);
+        proposalCard.appendChild(instructionMessage);
 
         // Texto y botones inicialmente ocultos
         const proposalPageText = document.createElement('div');
@@ -328,7 +345,7 @@
                 <strong>¿Me permites a mí ser el amor de tu vida?</strong>
             </div>
         `;
-        proposalPage.appendChild(proposalPageText);
+        proposalCard.appendChild(proposalPageText);
 
         const proposalButtonsDiv = document.createElement('div');
         proposalButtonsDiv.classList.add('proposal-buttons', 'hidden-content');
@@ -371,8 +388,9 @@
         proposalCredit.style.fontSize = '14px';
         proposalCredit.style.color = '#999';
 
-        proposalPage.appendChild(proposalButtonsDiv);
-        proposalPage.appendChild(proposalCredit);
+        proposalCard.appendChild(proposalButtonsDiv);
+        proposalCard.appendChild(proposalCredit);
+        proposalPage.appendChild(proposalCard);
         content.appendChild(proposalPage);
     }
 

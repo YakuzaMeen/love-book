@@ -16,6 +16,8 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    margin: 0;
+    overflow-x: hidden;
 }
 
 /* Fondo con corazones sutiles decorativos */
@@ -624,8 +626,56 @@ html {
 }
 
 /* ========================================
-   OPTIMIZACIONES PARA iOS
+   OPTIMIZACIONES PARA iOS - VERSIÓN SIMPLE
    ======================================== */
+
+.ios-container {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.ios-content {
+    width: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding: 0;
+    margin: 0;
+}
+
+.ios-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: white;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    animation: none;
+    text-align: center;
+}
+
+.ios-page-number {
+    color: #ff1493;
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.ios-page-text {
+    font-size: 20px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.ios-page-heart {
+    display: none;
+}
 
 .ios * {
     backface-visibility: hidden;
@@ -636,24 +686,34 @@ html {
 
 .ios body {
     background: linear-gradient(135deg, #fff5f7 0%, #ffe4e9 100%) !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
-.ios .swiper-container {
-    overflow: visible;
+.ios body::before {
+    content: none !important;
+    display: none !important;
 }
 
-.ios .swiper-slide {
-    height: auto !important;
-    min-height: 100vh;
-    backface-visibility: hidden;
+.ios .main-container {
+    display: none !important;
 }
 
-.ios .page-number,
-.ios .page-text,
-.ios .cover-title,
-.ios .cover-subtitle,
-.ios .cover-author {
-    will-change: auto;
+.ios #desktopContainer {
+    display: none !important;
+}
+
+.ios .quick-nav-bar {
+    display: none !important;
+}
+
+.ios .swiper-button-next,
+.ios .swiper-button-prev {
+    display: none !important;
+}
+
+.ios .swiper-pagination {
+    display: none !important;
 }
 
 .ios .proposal-modal {
@@ -664,8 +724,4 @@ html {
 .ios button {
     -webkit-appearance: none;
     appearance: none;
-}
-
-.ios body::before {
-    content: none !important;
 }

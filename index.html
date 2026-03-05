@@ -15,8 +15,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Contenedor principal -->
-    <div class="main-container">
+    <div id="iosContainer" class="ios-container" style="display: none;">
+        <!-- Versión simple para iOS -->
+        <div id="iosContent" class="ios-content">
+            <!-- Generado dinámicamente para iOS -->
+        </div>
+    </div>
+
+    <!-- Contenedor principal (Desktop/Android) -->
+    <div class="main-container" id="desktopContainer">
         <!-- Controles de navegación rápida (en portada) -->
         <div id="quickNavBar" class="quick-nav-bar">
             <input type="number" id="pageInput" class="page-input" placeholder="Ir a página (1-202)" min="1" max="202">

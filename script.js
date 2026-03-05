@@ -230,7 +230,7 @@
     // INICIALIZACIÓN DE SWIPER Y CONTENIDO
     let swiper = null;
 
-    // DETECTAR SI ES iOS PARA EVITAR PROBLEMAS CON EL EFECTO FLIP
+    // DETECTAR SI ES iOS PARA CREAR VERSIÓN LITE
     function isIOS() {
         const ua = navigator.userAgent.toLowerCase();
         return /iphone|ipad|ipod|ios/.test(ua) || 
@@ -240,11 +240,73 @@
     document.addEventListener('DOMContentLoaded', () => {
         if (isIOS()) {
             document.body.classList.add('ios');
+            document.getElementById('iosContainer').style.display = 'block';
+            document.getElementById('desktopContainer').style.display = 'none';
+            generateIOSSlides();
+        } else {
+            document.getElementById('iosContainer').style.display = 'none';
+            document.getElementById('desktopContainer').style.display = 'block';
+            generateSlides();
+            initializeSwiper();
+            setupQuickNav();
         }
-        generateSlides();
-        initializeSwiper();
-        setupQuickNav();
     });
+
+    // GENERAR VERSIÓN SIMPLE PARA iOS (Scroll vertical)
+    function generateIOSSlides() {
+        const content = document.getElementById('iosContent');
+        content.innerHTML = '';
+
+        // Portada iOS
+        const coverPage = document.createElement('div');
+        coverPage.className = 'ios-page';
+        coverPage.innerHTML = `
+            <div style="font-size: 48px; font-weight: bold; color: #ff1493; margin-bottom: 20px;">200 Razones</div>
+            <div style="font-size: 36px; font-weight: bold; color: #333; margin-bottom: 30px;">para Amarte</div>
+            <div style="font-size: 18px; color: #666;">y 1 para dejarte</div>
+            <div style="font-size: 14px; color: #999; margin-top: 40px;">Un pequeño libro hecho con cariño</div>
+        `;
+        content.appendChild(coverPage);
+
+        // Generar todas las 200 razones
+        reasons.forEach((reason, index) => {
+            const page = document.createElement('div');
+            page.className = 'ios-page';
+            page.innerHTML = `
+                <div class="ios-page-number">Razón ${index + 1}</div>
+                <div class="ios-page-text">${reason}</div>
+            `;
+            content.appendChild(page);
+        });
+
+        // Razón 201 (imposible)
+        const specialPageDiv = document.createElement('div');
+        specialPageDiv.className = 'ios-page';
+        const specialPageText = "La única razón por la que podría dejarte es si mi corazón dejara de latir, porque mientras viva, siempre voy a elegirte a ti.";
+        specialPageDiv.innerHTML = `
+            <div class="ios-page-number">Razón 201 - La Imposible</div>
+            <div class="ios-page-text">${specialPageText}</div>
+        `;
+        content.appendChild(specialPageDiv);
+
+        // Propuesta final
+        const proposalPage = document.createElement('div');
+        proposalPage.className = 'ios-page';
+        proposalPage.style.justifyContent = 'flex-start';
+        proposalPage.style.paddingTop = '60px';
+        proposalPage.innerHTML = `
+            <div style="font-size: 20px; color: #333; line-height: 1.8; margin-bottom: 40px;">
+                <strong>Después de 200 razones para amarte…</strong><br>
+                <br>
+                Hoy no te prometo perfección.<br>
+                Te prometo intención, respeto, lealtad y ganas reales.<br>
+                <br>
+                <strong>¿Me permites a mí ser el amor de tu vida?</strong>
+            </div>
+            <button onclick="showIOSProposalResponse()" style="padding: 12px 30px; font-size: 16px; background: #ff1493; color: white; border: none; border-radius: 25px; cursor: pointer; margin-top: 20px;">Sí, obvio</button>
+        `;
+        content.appendChild(proposalPage);
+    }
 
     // GENERAR SLIDES DINÁMICAMENTE
     function generateSlides() {
@@ -529,6 +591,16 @@
             heart.style.animationDelay = (Math.random() * 0.6) + 's';
             heartsContainer.appendChild(heart);
         }
+    }
+
+    // MOSTRAR RESPUESTA EN iOS
+    function showIOSProposalResponse() {
+        const modal = document.getElementById('proposalModal');
+        const modalText = document.getElementById('modalText');
+        modalText.textContent = 'Oficialmente eres mi novia';
+        modal.classList.remove('hidden');
+        createFloatingHearts();
+        setTimeout(() => modal.classList.add('hidden'), 4200);
     }
 
     // NAVEGACIÓN CON TECLAS
